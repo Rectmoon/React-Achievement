@@ -48,7 +48,5 @@ export class Component {
 }
 
 export default {
-  createElement,
-  useState,
-  useEffect
+  createElement
 }
