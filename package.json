@@ -1,0 +1,25 @@
+{
+  "name": "React-Achievement",
+  "version": "1.0.0",
+  "description": "React achievement",
+  "main": "index.js",
+  "scripts": {
+    "watch": "webpack --progress --watch",
+    "build": "webpack --progress --mode production"
+  },
+  "keywords": [
+    "react",
+    "react-dom"
+  ],
+  "author": "Rectmoon",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.6",
+    "@babel/plugin-transform-react-jsx": "^7.8.3",
+    "@babel/preset-env": "^7.8.6",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  }
+}
