@@ -5,6 +5,15 @@ const bugs = [
   { id: 2, title: 'bug2' }
 ]
 
+function Bar() {
+  return (
+    <div>
+      bar
+      <h2>hello</h2>
+    </div>
+  )
+}
+
 export default class App extends Component {
   constructor() {
     super()
@@ -25,9 +34,13 @@ export default class App extends Component {
       <div className="App">
         <h1>{this.state.num}</h1>
 
-        {bugs.map(bug => {
-          return <div key={bug.id}>{bug.title}</div>
-        })}
+        <div>
+          {bugs.map(bug => {
+            return <div key={bug.id}>{bug.title}</div>
+          })}
+        </div>
+
+        <Bar />
       </div>
     )
   }

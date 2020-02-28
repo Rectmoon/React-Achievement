@@ -321,21 +321,13 @@ export function renderComponent(component) {
     component.componentWillUpdate()
   }
   //  获取真实dom
-  // base = _render(renderer)
   base = diff(component.base, renderer)
 
   if (component.base) {
-    if (component.componentDieUpdate) component.componentDieUpdate()
+    if (component.componentDidUpdate) component.componentDidUpdate()
   } else if (component.componentDidMount) {
     component.componentDidMount()
   }
-
-  // //  刷新节点
-  // if (component.base && component.base.parentNode) {
-  //     //  用刷新好的节点替换掉旧的节点
-  //     //  replaceChild只能替换子节点 所以需要先获取dom的父级节点再进行替换
-  //     component.base.parentNode.replaceChild(base, component.base)
-  // }
 
   component.base = base
   base._component = component
