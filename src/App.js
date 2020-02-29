@@ -41,6 +41,8 @@ export default class App extends Component {
         </div>
 
         <Bar />
+
+        <button onClick={() => this.setState({ num: this.state.num + 1 })}>++</button>
       </div>
     )
   }

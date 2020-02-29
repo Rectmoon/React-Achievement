@@ -217,7 +217,7 @@ function diffChildren(dom, vchildren) {
       child = diff(child, vchild)
 
       //  这里将jsx函数写法的得到的虚拟dom没有type字段的数组过滤掉 避免编译出<undefined></undefined>的情况
-      if (!child && typeof vchild === 'object' && !vchild.type) continue
+      if (child && typeof vchild === 'object' && !vchild.type) continue
 
       // 更新DOM
       const f = domChildren[i]

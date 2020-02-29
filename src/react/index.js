@@ -8,6 +8,21 @@ function createElement(type, props, ...children) {
   }
 }
 
+export class Component {
+  constructor(props = {}) {
+    this.state = {}
+    this.props = props
+  }
+
+  setState(stateChange) {
+    enqueueSetState(stateChange, this)
+  }
+}
+
+export default {
+  createElement
+}
+
 /* 
    1. webpack + babel 编译时，会替换jsx为React.createElement(type, props, ...children)
    2. 所有 React.createElement() 执行结束后得到一个js对象(vdom)
@@ -62,18 +77,3 @@ function createElement(type, props, ...children) {
     cursor++
   }
 })()
-
-export class Component {
-  constructor(props = {}) {
-    this.state = {}
-    this.props = props
-  }
-
-  setState(stateChange) {
-    enqueueSetState(stateChange, this)
-  }
-}
-
-export default {
-  createElement
-}

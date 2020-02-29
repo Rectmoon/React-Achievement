@@ -6,16 +6,16 @@ import { setAttribute } from './dom'
  * @param {*} container 父级Dom
  * 转换虚拟Dom并挂载组件
  * */
-export default function render(vDom, container) {
+export default function render(vnode, container) {
   //  挂载渲染结果
-  return container.appendChild(_render(vDom))
+  return container.appendChild(initVNode(vnode))
 }
 
 /**
  * @param {*} vnode 虚拟Dom
  * 根据虚拟Dom类型返回相应的真实Dom
  * */
-export function _render(vnode) {
+export function initVNode(vnode) {
   if (vnode === undefined || vnode === null || typeof vnode === 'boolean') vnode = ''
 
   if (typeof vnode === 'number') vnode = String(vnode)
@@ -37,12 +37,7 @@ export function _render(vnode) {
 
   const dom = document.createElement(vnode.type)
 
-  if (vnode.props) {
-    Object.keys(vnode.props).forEach(key => {
-      const value = vnode.props[key]
-      setAttribute(dom, key, value)
-    })
-  }
+  vnode.props && Object.entries(vnode.props).forEach(([key, value]) => setAttribute(dom, key, value))
 
   //  递归插入子元素
   vnode.children.forEach(child => render(child, dom))
