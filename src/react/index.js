@@ -52,6 +52,11 @@ export default {
 
 !(function() {
   // hooks logic
+  /* 
+    为什么不能用 condition 包裹 useHook 语句 ?  https://reactjs.org/docs/hooks-rules.html?utm_source=caibaojian.com#explanation
+    React Hooks 并不是通过 Proxy 或者 getters 实现的，而是通过数组实现的，每次 useState 都会改变下标，
+    如果 useState 被包裹在 condition 中，那每次执行的下标就可能对不上，导致 useState 导出的 setter 更新错数据。
+  */
 
   let memoizedState = [] // hooks 存放在这个数组
   let cursor = 0 // 当前 memoizedState 下标
